@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import render_template
 
 app = Flask(__name__)
 
@@ -6,6 +7,9 @@ app = Flask(__name__)
 def home():
     return "Hello, Flask!"
 
+@app.route('/welcome/<name>')
+def welcome(name):
+    return render_template('home.html', name=name)
 
 @app.route('/hello/<username>')
 def hello_user(username):
